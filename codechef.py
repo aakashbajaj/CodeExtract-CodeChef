@@ -1,3 +1,4 @@
+
 from util import *
 from bs4 import BeautifulSoup
 
@@ -8,7 +9,7 @@ class Profile(object):
 	def __init__(self, handle=""):
 		super(Profile, self).__init__()
 		self.handle = handle
-		self.domain_url = "https://www.codechef.com/"
+		self.domain_url = "https://www.codechef.com"
 
 
 	def get_user_handle(self):
@@ -28,7 +29,7 @@ class Profile(object):
 		"""Return format { problem_code : problem_link }"""
 		domain_url = self.domain_url
 		handle = self.handle
-		user_url = domain_url + "users/" + handle
+		user_url = domain_url + "/users/" + handle
 		user_page = get_url_data(user_url)
 		soup = BeautifulSoup(user_page)
 		# Segregate problems table
@@ -41,6 +42,7 @@ class Profile(object):
 				n_soup = cell.nextSibling.nextSibling
 
 		for s in n_soup.find_all('a'):
-			prob_list[s.text.strip()] = (str(s.get('href'))).strip()
+			ques_link = (str(s.get('href'))).strip()
+			prob_list[s.text.strip()] = 
 
 		return prob_list
