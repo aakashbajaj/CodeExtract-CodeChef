@@ -1,10 +1,7 @@
 
 def get_user_handle():
-
 	usr_name = ''
-	
 	first_time = True
-	
 	while len(usr_name) == 0:
 		if first_time:
 			first_time = False
