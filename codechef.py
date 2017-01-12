@@ -60,7 +60,7 @@ class Profile(object):
 		code_link = ""
 
 		for s in obj.find_all('tr'):
-			if s.find('span').get('title') == "accepted" :
+			if s.find('img').get('src') == "/misc/tick-icon.gif" :
 				code_link = s.find_all('a')[-1].get('href')
 				break
 
@@ -69,7 +69,7 @@ class Profile(object):
 		return code_url
 
 	
-	def extract_code(self, prob_code, code_link):
+	def extract_code(self, code_link):
 		"""Function extracts the user submitted code from submission page"""
 		"""Return format @tuple (problem_code, code_lang, code_str)"""
 
