@@ -13,15 +13,16 @@ class Profile(object):
 
 
 	def get_user_handle(self):
-		self.usr_name = ''
+		usr_name = ''
 		first_time = True
-		while len(self.usr_name) == 0:
+		while len(usr_name) == 0:
 			if first_time:
 				first_time = False
 			else:
 				print("You haven't entered any handle. Please try again.")
 
-			self.usr_name = input("Enter Your CodeChef Handle: ").strip()
+			usr_name = input("Enter Your CodeChef Handle: ").strip()
+		self.handle = usr_name
 
 
 	def get_solved_problems(self):
