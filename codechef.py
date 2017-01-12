@@ -43,8 +43,8 @@ class Profile(object):
 
 		for s in n_soup.find_all('a'):
 			ques_link = (str(s.get('href'))).strip()
-			ques_link.
-			prob_list[s.text.strip()] = 
+			ques_url = ques_link
+			prob_list[s.text.strip()] = ques_url
 
 		return prob_list
 
@@ -63,10 +63,11 @@ class Profile(object):
 				code_link = s.find_all('a')[-1].get('href')
 				break
 
-		code_url = domain_url + code_link
+		code_url = code_link
 		
 		return code_url
 
+	
 	def extract_code(self, prob_code, code_link):
 		"""Function extracts the user submitted code from submission page"""
 		"""Return format @tuple (problem_code, code_lang, code_str)"""
