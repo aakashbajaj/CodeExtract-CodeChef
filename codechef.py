@@ -94,4 +94,4 @@ class Profile(object):
 		code = BeautifulSoup(cod_str,"lxml")
 		code_str = code.text
 
-		return (prob_code, lang, code_str)
+		return (lang, code_str)
