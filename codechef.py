@@ -48,12 +48,31 @@ class Profile(object):
 
 		return prob_list
 
-	def extract_code(self, prob_code, sub_link):
-		"""Function Extracts the user submitted code from submission page"""
+
+	def get_AC_submission(self, sub_link):
+		"""Function extracts the correct submission from list of user submissions for a problem"""
+		domain_url = self.domain_url
+		sub_page_url = domain_url + sub_link
+		sub_page = get_url_data(sub_page_url)
+		soup = BeautifulSoup(sub_page, "lxml")
+		obj = soup.find('tbody')
+		code_link = ""
+
+		for s in obj.find_all('tr'):
+			if s.find('span').get('title') == "accepted" :
+				code_link = s.find_all('a')[-1].get('href')
+				break
+
+		code_url = domain_url + code_link
+		
+		return code_url
+
+	def extract_code(self, prob_code, code_link):
+		"""Function extracts the user submitted code from submission page"""
 		"""Return format @tuple (problem_code, code_lang, code_str)"""
 
 		domain_url = self.domain_url
-		code_page_url = domain_url + sub_link
+		code_page_url = domain_url + code_link
 		code_page = get_url_data(code_page_url)
 		soup = BeautifulSoup(code_page,"lxml")
 
