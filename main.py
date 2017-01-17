@@ -16,6 +16,6 @@ except FileExistsError:
 for ques in ques_list:
 	sub_link = ques_list[ques]
 	code_link = usr.get_AC_submission(sub_link)
-	n_tpl = usr.extract_code(ques_list[ques])
+	n_tpl = usr.extract_code(code_link)
 	write_to_file(n_tpl[1], fld_name, ques, n_tpl[0])
 
