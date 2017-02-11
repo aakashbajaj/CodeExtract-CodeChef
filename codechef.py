@@ -71,7 +71,7 @@ class Profile(object):
 	
 	def extract_code(self, code_link):
 		"""Function extracts the user submitted code from submission page"""
-		"""Return format @tuple (problem_code, code_lang, code_str)"""
+		"""Return format @tuple (code_lang, code_str)"""
 
 		domain_url = self.domain_url
 		code_page_url = domain_url + code_link
